@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hunter-deployment
+spec:
+  replicas: 3 # adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: hunter
+  template:
+    metadata:
+      labels:
+        app: hunter
+    spec:
+      containers:
+      - name: hunter
+        image: localhost:32000/hunter:latest # replace with your image
+        ports:
+        - containerPort: 5001 # replace with the port your app uses

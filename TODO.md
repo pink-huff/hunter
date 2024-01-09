@@ -1,0 +1,24 @@
+# TODO
+
+- Add end point /domain to run all domain related queries
+- Add end point /ip to run all ip related queries 
+- Add end point /complete to run all queries and auto domain -> IP, IP -> domain etc
+- Add output for cli
+- Add Network Scanner
+- Imporove error handling 
+- Add High Level Diagram
+- Imporve format of results
+- Wayback machine API
+- Virus total API
+- Get Tech Stack for website
+- Google safe browsing API
+- Malware Scans
+- Website popularity and trends
+- Internal and external links
+- Crawl website
+- Security.txt
+- Block/ Ad list checker
+- Linked social platforms
+- News relating to domain/website/company
+- Logging
+- Auth
