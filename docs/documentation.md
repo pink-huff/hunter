@@ -146,6 +146,30 @@ Returns:
 bool: True if the domain is registered with Let's Encrypt, False otherwise.
 ```
 
+### get_ports_info
+```python
+Checks if the given URL is compatible with HSTS preload requirements.
+
+Args:
+url (str): The URL to check for HSTS preload compatibility.
+
+Returns:
+dict: A dictionary containing the status code, a message describing the HSTS compatibility,
+    and additional details like whether the site is compatible, the HSTS header if present,
+    and specific reasons for incompatibility if any.
+```
+
+### ping_domain
+```python
+Checks if the specified host responds to a ping request.
+
+Args:
+host (str): The hostname or IP address to ping.
+
+Returns:
+bool: True if the host responds to a ping request, False otherwise.
+```
+
 ### ping_domain_ttl
 ```python
 Checks if the specified host responds to a ping request and returns the TTL value and a base Nmap command.
