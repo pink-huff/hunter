@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 RUN pip install gunicorn
 
-# If using Alpine, fix the package installation command
+# package installation command
 RUN apk add --no-cache nmap bind-tools
 
 EXPOSE 5001
