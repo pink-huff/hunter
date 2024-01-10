@@ -20,13 +20,10 @@ Currently in Alpha.
 
 create .env file with credentials
 
-`SHODAN_API="XXX"`
-
-`BLACKLIST_CHECKER_API="XXX"`
-
-`VIRUS_TOTAL_API="XXX"`
-
-`GEO_IP_API="XXX"`
+    SHODAN_API="XXX"
+    BLACKLIST_CHECKER_API="XXX"
+    VIRUS_TOTAL_API="XXX"
+    GEO_IP_API="XXX"
 
 ### Use app_cli.py
 
