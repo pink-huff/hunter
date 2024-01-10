@@ -165,12 +165,15 @@ def redirect():
 @app.route('/robots', methods=['GET'])
 def robots():
     url_query = request.args.get('url')
+    if url_query is None:
+        return {'error': 'URL parameter is missing'}, 400
+
     if sanatise.is_url(url_query):
         robots_info = url.robotsInfo(url_query)
         robots_result = robots_info.get_robots_info()
         return {'data': robots_result}
     else:
-        return {'error': 'No domain provided'}, 400
+        return {'error': 'Invalid URL provided'}, 400
 
 # screenshot
 @app.route('/screenshot', methods=['GET'])
