@@ -1,7 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from core.general.errorresponse import error_response
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlunparse
+from bs4 import BeautifulSoup
 import socket
 import json
 import base64
@@ -366,3 +367,44 @@ class cookiesInfo:
             return {'skipped': 'No cookies'}
 
         return {'header_cookies': header_cookies, 'client_cookies': client_cookies}
+
+class faviconInfo:
+    def __init__(self, url):
+        self.url = url
+        self.icon_url = self.find_icon()
+
+    def find_icon(self):
+        try:
+            resp = requests.get(self.url)
+            resp.raise_for_status()
+            page = BeautifulSoup(resp.text, 'html.parser')
+            icons = [e for e in page.find_all(name='link') if 'icon' in e.get('rel', [])]
+
+            parsed_url = urlparse(self.url)  # Define parsed_url here for broader scope
+
+            if icons:
+                icon_url = icons[0].get('href')
+            else:
+                icon_url = f"{parsed_url.scheme}://{parsed_url.netloc}/favicon.ico"
+
+            url_parsed = urlparse(icon_url, scheme=parsed_url.scheme)
+            if not url_parsed.netloc:
+                icon_url = urlunparse((url_parsed.scheme, parsed_url.netloc, url_parsed.path, '', '', ''))
+
+            return icon_url
+        except requests.RequestException as e:
+            print(f"Error fetching favicon for {self.url}: {e}")
+            return None
+
+
+    def get_favicon_info(self):
+        if not self.icon_url:
+            return None
+
+        try:
+            resp = requests.get(self.icon_url)
+            resp.raise_for_status()
+            return base64.b64encode(resp.content).decode()
+        except requests.RequestException as e:
+            print(f"Error downloading favicon from {self.icon_url}: {e}")
+            return None

@@ -227,6 +227,20 @@ def cookies():
         return {'data': cookies_result}
     else:
         return {'error': 'No url provided'}, 400
+    
+# favicon
+@app.route('/favicon', methods=['GET'])
+def favicon():
+    url_query = request.args.get('url')
+    if url_query:  # Assuming you have a URL validation function
+        favicon_info = url.faviconInfo(url_query)
+        favicon_result = favicon_info.get_favicon_info()
+        if favicon_result:
+            return {'data': favicon_result}
+        else:
+            return {'error': 'Favicon not found'}, 404
+    else:
+        return {'error': 'No url provided'}, 400
 ## IP
 
 # dig
