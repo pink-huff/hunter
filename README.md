@@ -83,6 +83,8 @@ create .env file with credentials
 - `/traceroute`: Performs a traceroute to an IP address.
 - `/iptoasn`: Peforms IP asn
 - `/ipgeo`: Uses third party API for IP to geo
+- `/ipping`: Pings ip address
+- `/iptorrent`: Checks if IP has been cpatured in torrent tracker
 
 ### Shodan-Related Endpoints
 
@@ -95,4 +97,4 @@ create .env file with credentials
 - `/mozzilaTLS`: Uses Mozilla's TLS Observatory API to inspect the TLS configurations of a web domains.
 
 # DISCLAIMER
-**Always obey the laws**
+**Always obey the laws and do not soley rely on these tools**

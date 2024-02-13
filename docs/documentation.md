@@ -390,6 +390,17 @@ Returns:
 str or None: The output of the ping command if successful, or None if an error occurs.
 ```
 
+### get_torrent_activity
+```python
+Queries the IP address in the torrent network to check if it is active.
+
+Args:
+ip (str): The IP address to check for torrent activity.
+
+Returns:
+str: A message indicating whether the IP address is active in the torrent network.
+```
+
 ## Documentation for `network_scanner.py`
 
 

@@ -307,6 +307,17 @@ def ipping():
         return {'data': ping_result}
     else:
         return {'error': 'No ip provided'}, 400
+    
+# ip torrent activity
+@app.route('/iptorrent', methods=['GET'])
+def iptorrent():
+    ip_query = request.args.get('ip')
+    if ip_query:  # Assuming `sanitise.is_ip(ip_query)` is your way to validate an IP
+        ip_torrent_activity = ip.ipTorrentActivity(ip_query)
+        ip_torrent_result = ip_torrent_activity.get_torrent_activity()
+        return {'data': ip_torrent_result}
+    else:
+        return {'error': 'No ip provided'}, 400
 
 ## shodan 
     
